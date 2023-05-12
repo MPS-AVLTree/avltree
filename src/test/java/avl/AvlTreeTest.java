@@ -1394,5 +1394,111 @@ SearchClosestNode
       assertEquals(" | 2", avlTree.toString());
     }
   }
+
+    @Nested
+    @DisplayName("Tests for search method with items")
+    class testSearch {
+        @Test
+        @DisplayName("Search with null item")
+        void testSearchWithNullItem() {
+            assertNull(avlTree.search(null));
+        }
+
+        @Test
+        @DisplayName("Search with item in root")
+        void testSearchWithItemInRoot() {
+            avlTree.insert(5);
+
+            AvlNode<Integer> result = avlTree.search(5);
+
+            assertEquals(5, result.getItem());
+        }
+
+        @Test
+        @DisplayName("Search with item in left branch")
+        void testSearchWithItemInLeftBranch() {
+            avlTree.insert(5);
+            avlTree.insert(3);
+
+            AvlNode<Integer> result = avlTree.search(3);
+
+            assertEquals(3, result.getItem());
+        }
+
+        @Test
+        @DisplayName("Search with item in right branch")
+        void testSearchWithItemInRightBranch() {
+            avlTree.insert(5);
+            avlTree.insert(7);
+
+            AvlNode<Integer> result = avlTree.search(7);
+
+            assertEquals(7, result.getItem());
+        }
+
+        @Test
+        @DisplayName("Search with item not in tree")
+        void testSearchWithItemNotInTree() {
+            avlTree.insert(5);
+            avlTree.insert(3);
+            avlTree.insert(7);
+
+            AvlNode<Integer> result = avlTree.search(8);
+
+            assertNull(result);
+        }
+    }
+
+    @Nested
+    @DisplayName("Tests for delete method with items")
+    class testDelete {
+        @Test
+        @DisplayName("Delete with item in root")
+        public void testDeleteWithItemInRoot() {
+            avlTree.insert(10);
+            avlTree.delete(10);
+            assertNull(avlTree.search(10));
+        }
+
+        @Test
+        @DisplayName("Delete with item in left branch")
+        public void testDeleteWithItemInLeftBranch() {
+            avlTree.insert(10);
+            avlTree.insert(5);
+            avlTree.delete(5);
+            assertNull(avlTree.search(5));
+        }
+
+        @Test
+        @DisplayName("Delete with item in right branch")
+        public void testDeleteWithItemInRightBranch() {
+            avlTree.insert(10);
+            avlTree.insert(15);
+            avlTree.delete(15);
+            assertNull(avlTree.search(15));
+        }
+
+        @Test
+        @DisplayName("Delete with item not in tree")
+        public void testDeleteWithItemNotInTree() {
+            avlTree.insert(10);
+            avlTree.delete(20);
+            assertNotNull(avlTree.search(10));
+        }
+    }
+
+    @Test
+    @DisplayName("Insert with valid item")
+    void testInsertWithValidItem() {
+        avlTree.insert(5);
+        assertEquals(5, avlTree.top.getItem());
+        avlTree.insert(3);
+        assertEquals(5, avlTree.top.getItem());
+        assertEquals(3, avlTree.top.getLeft().getItem());
+        avlTree.insert(7);
+        assertEquals(5, avlTree.top.getItem());
+        assertEquals(3, avlTree.top.getLeft().getItem());
+        assertEquals(7, avlTree.top.getRight().getItem());
+    }
 }
 
