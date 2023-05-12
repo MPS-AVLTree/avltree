@@ -3,9 +3,10 @@ package avl;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNull;
 import static org.junit.Assert.*;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.springframework.test.util.AssertionErrors.assertEquals;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 import java.util.Comparator;
 import org.junit.Assert;
@@ -37,10 +38,10 @@ public class AvlTreeTest {
 
   @Test
   public void testAvlIsEmpty() throws Exception {
-    assertTrue(avlTree.avlIsEmpty());
+    assertTrue("TestAvlIsEmpty", avlTree.avlIsEmpty());
 
     avlTree.insertTop(new AvlNode(5));
-    assertFalse(avlTree.avlIsEmpty());
+    assertFalse("TestAvlIsEmpty", avlTree.avlIsEmpty());
   }
 
   @Test
@@ -964,6 +965,7 @@ public class AvlTreeTest {
       avlTree.insert(1);
       avlTree.insert(3);
       AvlNode node = new AvlNode(3);
+
       avlTree.deleteNode(node);
 
       assertEquals(null, avlTree.searchNode(node));
@@ -1392,77 +1394,5 @@ SearchClosestNode
       assertEquals(" | 2", avlTree.toString());
     }
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
-
-    /*@Test Completa los casos del While en el método FindSuccessor
-    public void FindSuccessorWhenNodeIsEqualToHisBrother(){
-        AvlNode<Integer> node;
-
-        node = new AvlNode<>(20);
-        avlTree.insertAvlNode(node);
-
-        node = new AvlNode<>(20);
-        avlTree.insertAvlNode(node);
-
-        node = new AvlNode<>(20);
-        avlTree.insertAvlNode(node);
-
-        node = new AvlNode<>(20);
-        avlTree.insertAvlNode(node);
-
-        node = new AvlNode<>(20);
-        avlTree.insertAvlNode(node);
-
-        avlTree.delete(20);
-
-        assertEquals(" | 20 | 20 | 20 | 20", avlTree.toString());
-    }*/
 

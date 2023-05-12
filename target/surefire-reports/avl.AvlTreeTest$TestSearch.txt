@@ -1,0 +1,9 @@
+-------------------------------------------------------------------------------
+Test set: avl.AvlTreeTest$TestSearch
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s - in avl.AvlTreeTest$TestSearch
+avl.AvlTreeTest$TestSearch.Given_AVLTreeWithElement3InRightBranch_When_Search3_Then_ReturnAVLNodeWithElement3  Time elapsed: 0.001 s
+avl.AvlTreeTest$TestSearch.Given_AVLTree_When_SearchNull_Then_ReturnNull  Time elapsed: 0 s
+avl.AvlTreeTest$TestSearch.Given_AVLTreeWithElement3InLeftBranch_When_Search3_Then_ReturnAVLNodeWithElement3  Time elapsed: 0 s
+avl.AvlTreeTest$TestSearch.Given_AVLTreeWithElement3InRoot_When_Search3_Then_ReturnAVLNodeWithElement3  Time elapsed: 0 s
+avl.AvlTreeTest$TestSearch.Given_AVLTreeWithNoElementsInside_When_Search3_Then_ReturnNull  Time elapsed: 0 s

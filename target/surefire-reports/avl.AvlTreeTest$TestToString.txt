@@ -1,0 +1,27 @@
+-------------------------------------------------------------------------------
+Test set: avl.AvlTreeTest$TestToString
+-------------------------------------------------------------------------------
+Tests run: 23, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s - in avl.AvlTreeTest$TestToString
+avl.AvlTreeTest.testInserting7_4_3_2_1  Time elapsed: 0.005 s
+avl.AvlTreeTest.testInserting7_8_9_10_11  Time elapsed: 0.002 s
+avl.AvlTreeTest.testDeletingNodesWithTwoLeaves  Time elapsed: 0.001 s
+avl.AvlTreeTest.testDeletingAndRebalancing  Time elapsed: 0.001 s
+avl.AvlTreeTest.testSearchNode  Time elapsed: 0.002 s
+avl.AvlTreeTest.testInsertingLeftLeftNodeAndRebalance  Time elapsed: 0.001 s
+avl.AvlTreeTest.testFindSuccessor  Time elapsed: 0.001 s
+avl.AvlTreeTest.testInsertingRightElement  Time elapsed: 0.001 s
+avl.AvlTreeTest.testInsertingLeftRightNodeAndRebalance  Time elapsed: 0 s
+avl.AvlTreeTest.testInsertTop  Time elapsed: 0.001 s
+avl.AvlTreeTest.testDeletingTopNode  Time elapsed: 0.001 s
+avl.AvlTreeTest.testInsertingRightRightNodeAndRebalance  Time elapsed: 0.001 s
+avl.AvlTreeTest.testDeletingLeafNodes  Time elapsed: 0 s
+avl.AvlTreeTest.testInsertingRightLeftNodeAndRebalance  Time elapsed: 0.001 s
+avl.AvlTreeTest.testCompareNodes  Time elapsed: 0 s
+avl.AvlTreeTest.testInsertingLeftElement  Time elapsed: 0.002 s
+avl.AvlTreeTest.testHeightAndBalanceOfASimpleBalancedTree  Time elapsed: 0.001 s
+avl.AvlTreeTest.testSearchClosestNode  Time elapsed: 0.001 s
+avl.AvlTreeTest.testDeletingNodesWithOneLeaf  Time elapsed: 0.001 s
+avl.AvlTreeTest.testInsertingRightAndLeftElementsJustAfterTop  Time elapsed: 0.001 s
+avl.AvlTreeTest.testAvlIsEmpty  Time elapsed: 0.004 s
+avl.AvlTreeTest$TestToString.Given_AVLTreeEmpty_When_ToString_Then_Blank  Time elapsed: 0.002 s
+avl.AvlTreeTest$TestToString.Given_AVLTreeNotEmpty_When_ToString_Then_AVLNodeItem  Time elapsed: 0 s

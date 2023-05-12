@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AvlTree.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">avlTree</a> &gt; <a href="index.source.html" class="el_package">avl</a> &gt; <span class="el_source">AvlTree.java</span></div><h1>AvlTree.java</h1><pre class="source lang-java linenums">//  AvlTree.java
+//
+//  Author:
+//       Antonio J. Nebro &lt;antonio@lcc.uma.es&gt;
+//       Juan J. Durillo &lt;durillo@lcc.uma.es&gt;
+//
+//  Copyright (c) 2011 Antonio J. Nebro, Juan J. Durillo
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU Lesser General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU Lesser General Public License for more details.
+//
+//  You should have received a copy of the GNU Lesser General Public License
+//  along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+//
+
+package avl;
+
+import java.util.Comparator;
+
+/**
+ * Created with IntelliJ IDEA. User: Antonio J. Nebro Date: 08/07/13 Time: 15:51 Class implementing
+ * Avl trees.
+ */
+public class AvlTree&lt;T&gt; {
+
+    AvlNode&lt;T&gt; top;
+    Comparator comparator;
+
+    /**
+     * Constructor
+     *
+     * @param comparator
+     */
+<span class="fc" id="L41">    public AvlTree(Comparator comparator) {</span>
+<span class="fc" id="L42">        top = null;</span>
+<span class="fc" id="L43">        this.comparator = comparator;</span>
+<span class="fc" id="L44">    }</span>
+
+    public void insert(T item) {
+<span class="fc" id="L47">        AvlNode&lt;T&gt; node = new AvlNode&lt;&gt;(item);</span>
+<span class="fc" id="L48">        insertAvlNode(node);</span>
+<span class="fc" id="L49">    }</span>
+
+    public void insertAvlNode(AvlNode&lt;T&gt; node) {
+<span class="fc bfc" id="L52" title="All 2 branches covered.">        if (avlIsEmpty()) {</span>
+<span class="fc" id="L53">            insertTop(node);</span>
+        } else {
+<span class="fc" id="L55">            int result = searchClosestNode(node);</span>
+
+<span class="pc bpc" id="L57" title="1 of 3 branches missed.">            switch (result) {</span>
+<span class="fc" id="L58">                case -1 -&gt; insertNodeLeft(node);</span>
+<span class="fc" id="L59">                case +1 -&gt; insertNodeRight(node);</span>
+                default -&gt; {
+                }
+            }
+        }
+<span class="fc" id="L64">    }</span>
+
+    public AvlNode&lt;T&gt; search(T item) {
+<span class="fc" id="L67">        AvlNode&lt;T&gt; node = new AvlNode&lt;&gt;(item);</span>
+<span class="fc" id="L68">        return searchNode(node);</span>
+    }
+
+    public AvlNode&lt;T&gt; searchNode(AvlNode&lt;T&gt; targetNode) {
+        AvlNode&lt;T&gt; currentNode;
+<span class="fc" id="L73">        AvlNode&lt;T&gt; result = null;</span>
+
+<span class="fc" id="L75">        currentNode = top;</span>
+<span class="fc bfc" id="L76" title="All 2 branches covered.">        if (top == null) {</span>
+<span class="fc" id="L77">            result = null;</span>
+        } else {
+            boolean searchFinished;
+            int comparison;
+<span class="fc" id="L81">            searchFinished = false;</span>
+<span class="fc bfc" id="L82" title="All 2 branches covered.">            while (!searchFinished) {</span>
+<span class="fc" id="L83">                comparison = compareNodes(targetNode, currentNode);</span>
+<span class="fc bfc" id="L84" title="All 2 branches covered.">                if (comparison &lt; 0) {</span>
+<span class="fc bfc" id="L85" title="All 2 branches covered.">                    if (currentNode.getLeft() != null) {</span>
+<span class="fc" id="L86">                        currentNode = currentNode.getLeft();</span>
+                    } else {
+<span class="fc" id="L88">                        searchFinished = true;</span>
+<span class="fc" id="L89">                        result = null;</span>
+                    }
+<span class="fc bfc" id="L91" title="All 2 branches covered.">                } else if (comparison &gt; 0) {</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">                    if (currentNode.getRight() != null) {</span>
+<span class="fc" id="L93">                        currentNode = currentNode.getRight();</span>
+                    } else {
+<span class="fc" id="L95">                        searchFinished = true;</span>
+<span class="fc" id="L96">                        result = null;</span>
+                    }
+                } else {
+<span class="fc" id="L99">                    searchFinished = true;</span>
+<span class="fc" id="L100">                    result = currentNode;</span>
+                }
+            }
+        }
+<span class="fc" id="L104">        return result;</span>
+    }
+
+    public void delete(T item) {
+<span class="fc" id="L108">        deleteNode(new AvlNode&lt;&gt;(item));</span>
+<span class="fc" id="L109">    }</span>
+
+    public void deleteNode(AvlNode&lt;T&gt; node) {
+        AvlNode&lt;T&gt; nodeFound;
+
+<span class="fc" id="L114">        nodeFound = searchNode(node);</span>
+<span class="fc bfc" id="L115" title="All 2 branches covered.">        if (nodeFound != null) {</span>
+<span class="fc bfc" id="L116" title="All 2 branches covered.">            if (nodeFound.isLeaf()) {</span>
+<span class="fc" id="L117">                deleteLeafNode(nodeFound);</span>
+<span class="fc bfc" id="L118" title="All 2 branches covered.">            } else if (nodeFound.hasOnlyALeftChild()) {</span>
+<span class="fc" id="L119">                deleteNodeWithALeftChild(nodeFound);</span>
+<span class="fc bfc" id="L120" title="All 2 branches covered.">            } else if (nodeFound.hasOnlyARightChild()) {</span>
+<span class="fc" id="L121">                deleteNodeWithARightChild(nodeFound);</span>
+            } else { // has two children
+<span class="fc" id="L123">                AvlNode&lt;T&gt; successor = findSuccessor(nodeFound);</span>
+<span class="fc" id="L124">                T tmp = successor.getItem();</span>
+<span class="fc" id="L125">                successor.setItem(nodeFound.getItem());</span>
+<span class="fc" id="L126">                nodeFound.setItem(tmp);</span>
+<span class="fc bfc" id="L127" title="All 2 branches covered.">                if (successor.isLeaf()) {</span>
+<span class="fc" id="L128">                    deleteLeafNode(successor);</span>
+                }else {
+<span class="fc" id="L130">                    deleteNodeWithARightChild(successor);</span>
+                }
+            }
+        }
+<span class="fc" id="L134">    }</span>
+
+    public void deleteLeafNode(AvlNode&lt;T&gt; node) {
+<span class="fc bfc" id="L137" title="All 2 branches covered.">        if (!node.hasParent()) {</span>
+<span class="fc" id="L138">            top = null;</span>
+        } else {
+<span class="fc bfc" id="L140" title="All 2 branches covered.">            if (node.getParent().getLeft() == node) {</span>
+<span class="fc" id="L141">                node.getParent().setLeft(null);</span>
+            } else {
+<span class="fc" id="L143">                node.getParent().setRight(null);</span>
+            }
+<span class="fc" id="L145">            node.getParent().updateHeight();</span>
+<span class="fc" id="L146">            rebalance(node.getParent());</span>
+        }
+<span class="fc" id="L148">    }</span>
+
+    public void deleteNodeWithALeftChild(AvlNode&lt;T&gt; node) {
+<span class="fc" id="L151">        node.setItem((T) node.getLeft().getItem());</span>
+<span class="fc" id="L152">        node.setLeft(null);</span>
+<span class="fc" id="L153">        node.updateHeight();</span>
+<span class="fc" id="L154">        rebalance(node);</span>
+<span class="fc" id="L155">    }</span>
+
+    public void deleteNodeWithARightChild(AvlNode&lt;T&gt; node) {
+<span class="fc" id="L158">        node.setItem((T) node.getRight().getItem());</span>
+<span class="fc" id="L159">        node.setRight(null);</span>
+<span class="fc" id="L160">        node.updateHeight();</span>
+<span class="fc" id="L161">        rebalance(node);</span>
+<span class="fc" id="L162">    }</span>
+
+    /**
+     * Searches for the closest node of the node passed as argument
+     *
+     * @param node
+     * @return -1 if node has to be inserted in the left, +1 if it must be inserted in the right, 0
+     * otherwise
+     */
+    public int searchClosestNode(AvlNode&lt;T&gt; node) {
+        AvlNode&lt;T&gt; currentNode;
+<span class="fc" id="L173">        int result = 0;</span>
+
+<span class="fc" id="L175">        currentNode = top;</span>
+<span class="fc bfc" id="L176" title="All 2 branches covered.">        if (top == null) {</span>
+<span class="fc" id="L177">            result = 0;</span>
+        } else {
+            int comparison;
+<span class="fc" id="L180">            boolean notFound = true;</span>
+<span class="fc bfc" id="L181" title="All 2 branches covered.">            while (notFound) {</span>
+<span class="fc" id="L182">                comparison = compareNodes(node, currentNode);</span>
+<span class="fc bfc" id="L183" title="All 2 branches covered.">                if (comparison &lt; 0) {</span>
+<span class="fc bfc" id="L184" title="All 2 branches covered.">                    if (currentNode.hasLeft()) {</span>
+<span class="fc" id="L185">                        currentNode = currentNode.getLeft();</span>
+                    } else {
+<span class="fc" id="L187">                        notFound = false;</span>
+<span class="fc" id="L188">                        node.setClosestNode(currentNode);</span>
+<span class="fc" id="L189">                        result = -1;</span>
+                    }
+<span class="fc bfc" id="L191" title="All 2 branches covered.">                } else if (comparison &gt; 0) {</span>
+<span class="fc bfc" id="L192" title="All 2 branches covered.">                    if (currentNode.hasRight()) {</span>
+<span class="fc" id="L193">                        currentNode = currentNode.getRight();</span>
+                    } else {
+<span class="fc" id="L195">                        notFound = false;</span>
+<span class="fc" id="L196">                        node.setClosestNode(currentNode);</span>
+<span class="fc" id="L197">                        result = 1;</span>
+                    }
+                } else {
+<span class="fc" id="L200">                    notFound = false;</span>
+<span class="fc" id="L201">                    node.setClosestNode(currentNode);</span>
+<span class="fc" id="L202">                    result = 0;</span>
+                }
+            }
+        }
+
+<span class="fc" id="L207">        return result;</span>
+    }
+
+    public AvlNode&lt;T&gt; findSuccessor(AvlNode&lt;T&gt; node) {
+        AvlNode&lt;T&gt; result;
+
+<span class="fc bfc" id="L213" title="All 2 branches covered.">        if (node.hasRight()) {</span>
+<span class="fc" id="L214">            AvlNode&lt;T&gt; tmp = node.getRight();</span>
+<span class="fc bfc" id="L215" title="All 2 branches covered.">            while (tmp.hasLeft()) {</span>
+<span class="fc" id="L216">                tmp = tmp.getLeft();</span>
+            }
+<span class="fc" id="L218">            result = tmp;</span>
+<span class="fc" id="L219">        } else {</span>
+<span class="pc bpc" id="L220" title="1 of 4 branches missed.">            while (node.hasParent() &amp;&amp; (node.getParent().getRight() == node)) {</span>
+<span class="fc" id="L221">                node = node.getParent();</span>
+            }
+<span class="fc" id="L223">            result = node.getParent();</span>
+        }
+<span class="fc" id="L225">        return result;</span>
+    }
+
+    /**
+     * Insert node in the left of its nearest node
+     *
+     * @param node REQUIRES: a previous call to searchClosestNode(node)
+     */
+    public void insertNodeLeft(AvlNode&lt;T&gt; node) {
+<span class="fc" id="L234">        node.getClosestNode().setLeft(node);</span>
+<span class="fc" id="L235">        node.setParent(node.getClosestNode());</span>
+<span class="fc" id="L236">        rebalance(node);</span>
+<span class="fc" id="L237">    }</span>
+
+    /**
+     * Insert node in the right of its nearest node
+     *
+     * @param node REQUIRES: a previous call to searchClosestNode(node)
+     */
+    public void insertNodeRight(AvlNode&lt;T&gt; node) {
+<span class="fc" id="L245">        node.getClosestNode().setRight(node);</span>
+<span class="fc" id="L246">        node.setParent(node.getClosestNode());</span>
+<span class="fc" id="L247">        rebalance(node);</span>
+<span class="fc" id="L248">    }</span>
+
+    /**
+     * Comparator
+     *
+     * @param node1
+     * @param node2
+     * @return The experimentoutput of the comparison according to the comparators
+     */
+    public int compareNodes(AvlNode&lt;T&gt; node1, AvlNode&lt;T&gt; node2) {
+<span class="fc" id="L258">        return comparator.compare(node1.getItem(), node2.getItem());</span>
+    }
+
+    public void rebalance(AvlNode&lt;T&gt; node) {
+        AvlNode&lt;T&gt; currentNode;
+        boolean notFinished;
+
+<span class="fc" id="L265">        currentNode = node;</span>
+<span class="fc" id="L266">        notFinished = true;</span>
+
+<span class="fc bfc" id="L268" title="All 2 branches covered.">        while (notFinished) {</span>
+<span class="fc bfc" id="L269" title="All 2 branches covered.">            if (getBalance(currentNode) == -2) {</span>
+<span class="fc bfc" id="L270" title="All 2 branches covered.">                if (height(currentNode.getLeft().getLeft()) &gt;= height(currentNode.getLeft().getRight())) {</span>
+<span class="fc" id="L271">                    leftRotation(currentNode);</span>
+                } else {
+<span class="fc" id="L273">                    doubleLeftRotation(currentNode);</span>
+                }
+            }
+
+<span class="fc bfc" id="L277" title="All 2 branches covered.">            if (getBalance(currentNode) == 2) {</span>
+<span class="fc bfc" id="L278" title="All 2 branches covered.">                if (height(currentNode.getRight().getRight()) &gt;= height(currentNode.getRight().getLeft())) {</span>
+<span class="fc" id="L279">                    rightRotation(currentNode);</span>
+                } else {
+<span class="fc" id="L281">                    doubleRightRotation(currentNode);</span>
+                }
+            }
+
+<span class="fc bfc" id="L285" title="All 2 branches covered.">            if (currentNode.hasParent()) {</span>
+<span class="fc" id="L286">                currentNode.getParent().updateHeight();</span>
+<span class="fc" id="L287">                currentNode = currentNode.getParent();</span>
+            } else {
+<span class="fc" id="L289">                setTop(currentNode);</span>
+<span class="fc" id="L290">                notFinished = false;</span>
+            }
+        }
+<span class="fc" id="L293">    }</span>
+
+    public void leftRotation(AvlNode&lt;T&gt; node) {
+<span class="fc" id="L296">        AvlNode&lt;T&gt; leftNode = node.getLeft();</span>
+
+<span class="fc bfc" id="L298" title="All 2 branches covered.">        if (node.hasParent()) {</span>
+<span class="fc" id="L299">            leftNode.setParent(node.getParent());</span>
+<span class="fc bfc" id="L300" title="All 2 branches covered.">            if (node.getParent().getLeft() == node) {</span>
+<span class="fc" id="L301">                node.getParent().setLeft(leftNode);</span>
+            } else {
+<span class="fc" id="L303">                node.getParent().setRight(leftNode);</span>
+            }
+        } else {
+<span class="fc" id="L306">            setTop(leftNode);</span>
+        }
+
+<span class="fc" id="L309">        node.setLeft(node.getLeft().getRight());</span>
+<span class="fc" id="L310">        leftNode.setRight(node);</span>
+<span class="fc" id="L311">        node.setParent(leftNode);</span>
+
+<span class="fc" id="L313">        node.updateHeight();</span>
+<span class="fc" id="L314">        leftNode.updateHeight();</span>
+<span class="fc" id="L315">    }</span>
+
+    public void rightRotation(AvlNode&lt;T&gt; node) {
+<span class="fc" id="L318">        AvlNode&lt;T&gt; rightNode = node.getRight();</span>
+
+<span class="fc bfc" id="L320" title="All 2 branches covered.">        if (node.hasParent()) {</span>
+<span class="fc" id="L321">            rightNode.setParent(node.getParent());</span>
+<span class="fc bfc" id="L322" title="All 2 branches covered.">            if (node.getParent().getRight() == node) {</span>
+<span class="fc" id="L323">                node.getParent().setRight(rightNode);</span>
+            } else {
+<span class="fc" id="L325">                node.getParent().setLeft(rightNode);</span>
+            }
+        } else {
+<span class="fc" id="L328">            setTop(rightNode);</span>
+        }
+
+<span class="fc" id="L331">        node.setRight(node.getRight().getLeft());</span>
+<span class="fc" id="L332">        rightNode.setLeft(node);</span>
+<span class="fc" id="L333">        node.setParent(rightNode);</span>
+
+<span class="fc" id="L335">        node.updateHeight();</span>
+<span class="fc" id="L336">        rightNode.updateHeight();</span>
+<span class="fc" id="L337">    }</span>
+
+    public void doubleLeftRotation(AvlNode&lt;T&gt; node) {
+<span class="fc" id="L340">        AvlNode&lt;T&gt; leftNode = node.getLeft();</span>
+
+<span class="fc" id="L342">        rightRotation(leftNode);</span>
+<span class="fc" id="L343">        leftRotation(node);</span>
+<span class="fc" id="L344">    }</span>
+
+    public void doubleRightRotation(AvlNode&lt;T&gt; node) {
+<span class="fc" id="L347">        AvlNode&lt;T&gt; rightNode = node.getRight();</span>
+
+<span class="fc" id="L349">        leftRotation(rightNode);</span>
+<span class="fc" id="L350">        rightRotation(node);</span>
+<span class="fc" id="L351">    }</span>
+
+    public int getBalance(AvlNode&lt;T&gt; node) {
+        int leftHeight;
+        int rightHeight;
+
+<span class="fc bfc" id="L357" title="All 2 branches covered.">        if (node.hasLeft()) {</span>
+<span class="fc" id="L358">            leftHeight = node.getLeft().getHeight();</span>
+        } else {
+<span class="fc" id="L360">            leftHeight = -1;</span>
+        }
+<span class="fc bfc" id="L362" title="All 2 branches covered.">        if (node.hasRight()) {</span>
+<span class="fc" id="L363">            rightHeight = node.getRight().getHeight();</span>
+        } else {
+<span class="fc" id="L365">            rightHeight = -1;</span>
+        }
+
+<span class="fc" id="L368">        return rightHeight - leftHeight;</span>
+    }
+
+    public boolean avlIsEmpty() {
+<span class="fc bfc" id="L372" title="All 2 branches covered.">        return top == null;</span>
+    }
+
+    public void insertTop(AvlNode&lt;T&gt; node) {
+<span class="fc" id="L376">        top = node;</span>
+<span class="fc" id="L377">    }</span>
+
+
+    public AvlNode&lt;T&gt; getTop() {
+<span class="fc" id="L381">        return top;</span>
+    }
+
+    public void setTop(AvlNode&lt;T&gt; top) {
+<span class="fc" id="L385">        this.top = top;</span>
+<span class="fc" id="L386">        this.top.setParent(null);</span>
+<span class="fc" id="L387">    }</span>
+
+    public int height(AvlNode&lt;T&gt; node) {
+<span class="fc" id="L390">        int result = 0;</span>
+<span class="fc bfc" id="L391" title="All 2 branches covered.">        if (node == null) {</span>
+<span class="fc" id="L392">            result = -1;</span>
+        } else {
+<span class="fc" id="L394">            result = node.getHeight();</span>
+        }
+
+<span class="fc" id="L397">        return result;</span>
+    }
+
+    public String toString() {
+        String result;
+
+<span class="fc" id="L403">        result = inOrder(top);</span>
+
+<span class="fc" id="L405">        return result;</span>
+    }
+
+    private String inOrder(AvlNode&lt;T&gt; node) {
+        String result;
+<span class="fc bfc" id="L410" title="All 2 branches covered.">        if (node == null) {</span>
+<span class="fc" id="L411">            return &quot;&quot;;</span>
+        } else {
+<span class="fc" id="L413">            result = &quot; | &quot; + node.getItem();</span>
+<span class="fc" id="L414">            result += inOrder(node.getLeft());</span>
+<span class="fc" id="L415">            result += inOrder(node.getRight());</span>
+<span class="fc" id="L416">            return result;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

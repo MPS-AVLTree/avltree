@@ -1,0 +1,7 @@
+-------------------------------------------------------------------------------
+Test set: avl.AvlTreeTest$TestDeleteNodeWithARightChild
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s - in avl.AvlTreeTest$TestDeleteNodeWithARightChild
+avl.AvlTreeTest$TestDeleteNodeWithARightChild.Given_AVLTreeWithElement0_When_DeleteNodeWithARightChild0_Then_AVLNode0IsNotInTree  Time elapsed: 0.001 s
+avl.AvlTreeTest$TestDeleteNodeWithARightChild.Given_AVLTreeWithElement1InRoot_When_DeleteNodeWithARightChild1_Then_AVLNode1IsNotInTree  Time elapsed: 0.001 s
+avl.AvlTreeTest$TestDeleteNodeWithARightChild.Given_AVLTree_When_DeleteNodeWithARightChildNull_Then_NothingHappens  Time elapsed: 0.001 s

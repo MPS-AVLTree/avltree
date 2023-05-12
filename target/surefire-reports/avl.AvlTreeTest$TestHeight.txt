@@ -1,0 +1,7 @@
+-------------------------------------------------------------------------------
+Test set: avl.AvlTreeTest$TestHeight
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s - in avl.AvlTreeTest$TestHeight
+avl.AvlTreeTest$TestHeight.Given_AVLTreeNull_When_Height_Then_0  Time elapsed: 0.001 s
+avl.AvlTreeTest$TestHeight.Given_AVLTreeWithHeight1_When_Height1_Then_0  Time elapsed: 0.002 s
+avl.AvlTreeTest$TestHeight.Given_AVLTreeWithHeight2_When_Height_Then_1  Time elapsed: 0.001 s

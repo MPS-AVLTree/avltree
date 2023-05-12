@@ -1,0 +1,5 @@
+-------------------------------------------------------------------------------
+Test set: avl.AvlTreeTest$TestInOrder
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.083 s - in avl.AvlTreeTest$TestInOrder
+avl.AvlTreeTest$TestInOrder.Given_AVLTree_When_InOrderNull_Then_Blank  Time elapsed: 0.081 s

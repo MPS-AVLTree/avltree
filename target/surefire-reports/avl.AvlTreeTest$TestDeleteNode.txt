@@ -1,0 +1,14 @@
+-------------------------------------------------------------------------------
+Test set: avl.AvlTreeTest$TestDeleteNode
+-------------------------------------------------------------------------------
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.016 s - in avl.AvlTreeTest$TestDeleteNode
+avl.AvlTreeTest$TestDeleteNode.Given_AVLTreeWithNoElementsInside_When_DeleteNode_Then_NothingHappens  Time elapsed: 0.001 s
+avl.AvlTreeTest$TestDeleteNode.deleteNodeTest  Time elapsed: 0.001 s
+avl.AvlTreeTest$TestDeleteNode.testEmptyTree  Time elapsed: 0.001 s
+avl.AvlTreeTest$TestDeleteNode.Given_AVLTreeWithElement1InRoot_When_DeleteNode1_Then_AVLNode1IsNotInTree  Time elapsed: 0.001 s
+avl.AvlTreeTest$TestDeleteNode.Given_AVLTreeWithElement1InRightBranch_When_DeleteNodeRoot_Then_AVLNode1IsNotInTree  Time elapsed: 0.001 s
+avl.AvlTreeTest$TestDeleteNode.Given_AVLTree_When_DeleteNodeNull_Then_NothingHappens  Time elapsed: 0.003 s
+avl.AvlTreeTest$TestDeleteNode.InsertAvlNodeTest  Time elapsed: 0.001 s
+avl.AvlTreeTest$TestDeleteNode.testInsertMethod  Time elapsed: 0.001 s
+avl.AvlTreeTest$TestDeleteNode.Given_AVLTreeWithElement3InRightBranch_When_DeleteNode3_Then_AVLNode3IsNotInTree  Time elapsed: 0 s
+avl.AvlTreeTest$TestDeleteNode.Given_AVLTreeWithElement0InLeftBranch_When_DeleteNode0_Then_AVLNode0IsNotInTree  Time elapsed: 0 s

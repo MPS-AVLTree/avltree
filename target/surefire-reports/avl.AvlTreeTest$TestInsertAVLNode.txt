@@ -1,0 +1,6 @@
+-------------------------------------------------------------------------------
+Test set: avl.AvlTreeTest$TestInsertAVLNode
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s - in avl.AvlTreeTest$TestInsertAVLNode
+avl.AvlTreeTest$TestInsertAVLNode.Given_AVLTree_When_InsertAVLNodeNull_Then_NothingHappens  Time elapsed: 0.001 s
+avl.AvlTreeTest$TestInsertAVLNode.Given_AVLTree_When_InsertAVLNode_Then_Inserted  Time elapsed: 0.001 s
