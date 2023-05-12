@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: avl.AvlNodeTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.075 s - in avl.AvlNodeTest
-avl.AvlNodeTest.NodeWithOnlyRightChild  Time elapsed: 0.046 s
-avl.AvlNodeTest.shouldSetHeight  Time elapsed: 0.003 s
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.064 s - in avl.AvlNodeTest
+avl.AvlNodeTest.NodeWithOnlyRightChild  Time elapsed: 0.037 s
+avl.AvlNodeTest.shouldSetHeight  Time elapsed: 0.002 s
 avl.AvlNodeTest.testHasLeft  Time elapsed: 0.001 s
 avl.AvlNodeTest.testHasRight  Time elapsed: 0.001 s

@@ -1,6 +1,6 @@
 -------------------------------------------------------------------------------
 Test set: avl.AvlTreeTest$TestIsEmpty
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s - in avl.AvlTreeTest$TestIsEmpty
-avl.AvlTreeTest$TestIsEmpty.Given_AVLTreeEmpty_When_IsEmpty_Then_True  Time elapsed: 0.002 s
-avl.AvlTreeTest$TestIsEmpty.Given_AVLTreeNotEmpty_When_IsEmpty_Then_False  Time elapsed: 0.001 s
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s - in avl.AvlTreeTest$TestIsEmpty
+avl.AvlTreeTest$TestIsEmpty.Given_AVLTreeEmpty_When_IsEmpty_Then_True  Time elapsed: 0.001 s
+avl.AvlTreeTest$TestIsEmpty.Given_AVLTreeNotEmpty_When_IsEmpty_Then_False  Time elapsed: 0.002 s

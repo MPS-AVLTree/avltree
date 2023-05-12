@@ -9,9 +9,11 @@ avl\AvlTreeTest$TestHeight.class
 avl\AvlTreeTest$TestToString.class
 avl\AvlTreeTest$TestDeleteLeafNode.class
 avl\AvlTreeTest$TestIsEmpty.class
+avl\AvlTreeTest$TestSearch2.class
 avl\AvlTreeTest$TestInsertTop.class
 avl\AvlTreeTest$TestDeleteNodeWithARightChild.class
 avl\AvlTreeTest$TestSearchNode.class
 avl\AvlNodeTest.class
 avl\AvlTreeTest$TestInOrder.class
+avl\AvlTreeTest$TestDelete2.class
 avl\AvlTreeTest.class

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="avl.AvlNodeTest" time="0.064" tests="4" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="avl.AvlTreeTest$TestDelete2" time="0.006" tests="26" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="18"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -59,8 +59,30 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="62.0"/>
   </properties>
-  <testcase name="NodeWithOnlyRightChild" classname="avl.AvlNodeTest" time="0.037"/>
-  <testcase name="shouldSetHeight" classname="avl.AvlNodeTest" time="0.002"/>
-  <testcase name="testHasLeft" classname="avl.AvlNodeTest" time="0.001"/>
-  <testcase name="testHasRight" classname="avl.AvlNodeTest" time="0.001"/>
+  <testcase name="testInserting7_4_3_2_1" classname="avl.AvlTreeTest" time="0.006"/>
+  <testcase name="testInserting7_8_9_10_11" classname="avl.AvlTreeTest" time="0.001"/>
+  <testcase name="testDeletingNodesWithTwoLeaves" classname="avl.AvlTreeTest" time="0.001"/>
+  <testcase name="testDeletingAndRebalancing" classname="avl.AvlTreeTest" time="0.002"/>
+  <testcase name="testSearchNode" classname="avl.AvlTreeTest" time="0.001"/>
+  <testcase name="testInsertingLeftLeftNodeAndRebalance" classname="avl.AvlTreeTest" time="0.001"/>
+  <testcase name="testFindSuccessor" classname="avl.AvlTreeTest" time="0.001"/>
+  <testcase name="testInsertingRightElement" classname="avl.AvlTreeTest" time="0.002"/>
+  <testcase name="testInsertingLeftRightNodeAndRebalance" classname="avl.AvlTreeTest" time="0.002"/>
+  <testcase name="testInsertTop" classname="avl.AvlTreeTest" time="0.002"/>
+  <testcase name="testDeletingTopNode" classname="avl.AvlTreeTest" time="0.002"/>
+  <testcase name="testInsertWithValidItem" classname="avl.AvlTreeTest" time="0.001"/>
+  <testcase name="testInsertingRightRightNodeAndRebalance" classname="avl.AvlTreeTest" time="0.001"/>
+  <testcase name="testDeletingLeafNodes" classname="avl.AvlTreeTest" time="0"/>
+  <testcase name="testInsertingRightLeftNodeAndRebalance" classname="avl.AvlTreeTest" time="0"/>
+  <testcase name="testCompareNodes" classname="avl.AvlTreeTest" time="0.001"/>
+  <testcase name="testInsertingLeftElement" classname="avl.AvlTreeTest" time="0.001"/>
+  <testcase name="testHeightAndBalanceOfASimpleBalancedTree" classname="avl.AvlTreeTest" time="0.001"/>
+  <testcase name="testSearchClosestNode" classname="avl.AvlTreeTest" time="0"/>
+  <testcase name="testDeletingNodesWithOneLeaf" classname="avl.AvlTreeTest" time="0.001"/>
+  <testcase name="testInsertingRightAndLeftElementsJustAfterTop" classname="avl.AvlTreeTest" time="0.001"/>
+  <testcase name="testAvlIsEmpty" classname="avl.AvlTreeTest" time="0.004"/>
+  <testcase name="testDeleteWithItemInLeftBranch" classname="avl.AvlTreeTest$TestDelete2" time="0.001"/>
+  <testcase name="testDeleteWithItemNotInTree" classname="avl.AvlTreeTest$TestDelete2" time="0"/>
+  <testcase name="testDeleteWithItemInRightBranch" classname="avl.AvlTreeTest$TestDelete2" time="0"/>
+  <testcase name="testDeleteWithItemInRoot" classname="avl.AvlTreeTest$TestDelete2" time="0.001"/>
 </testsuite>

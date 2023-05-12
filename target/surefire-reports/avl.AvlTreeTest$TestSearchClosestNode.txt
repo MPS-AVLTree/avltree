@@ -4,8 +4,8 @@ Test set: avl.AvlTreeTest$TestSearchClosestNode
 Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s - in avl.AvlTreeTest$TestSearchClosestNode
 avl.AvlTreeTest$TestSearchClosestNode.Given_AVLTreeWithElement0InRoot_When_SearchClosestNode1_Then_1  Time elapsed: 0.001 s
 avl.AvlTreeTest$TestSearchClosestNode.Given_AVLTreeWithElement1InRightBranch_When_SearchClosestNode2_Then_1  Time elapsed: 0.001 s
-avl.AvlTreeTest$TestSearchClosestNode.Given_AVLTreeWithElement1InLeftBranch_When_SearchClosestNode0_Then_Neg1  Time elapsed: 0.001 s
-avl.AvlTreeTest$TestSearchClosestNode.Given_AVLTreeWithElement1InRightBranch_When_SearchClosestNode2_Then_Neg1  Time elapsed: 0.001 s
-avl.AvlTreeTest$TestSearchClosestNode.Given_AVLTree_When_SearchClosestNodeNull_Then_Exception  Time elapsed: 0 s
+avl.AvlTreeTest$TestSearchClosestNode.Given_AVLTreeWithElement1InLeftBranch_When_SearchClosestNode0_Then_Neg1  Time elapsed: 0 s
+avl.AvlTreeTest$TestSearchClosestNode.Given_AVLTreeWithElement1InRightBranch_When_SearchClosestNode2_Then_Neg1  Time elapsed: 0 s
+avl.AvlTreeTest$TestSearchClosestNode.Given_AVLTree_When_SearchClosestNodeNull_Then_Exception  Time elapsed: 0.001 s
 avl.AvlTreeTest$TestSearchClosestNode.Given_AVLTreeWithElement0InLeftBranch_When_SearchClosestNode1_Then_1  Time elapsed: 0.001 s
-avl.AvlTreeTest$TestSearchClosestNode.Given_AVLTreeWithElement1InRoot_When_SearchClosestNode0_Then_Negative1  Time elapsed: 0.001 s
+avl.AvlTreeTest$TestSearchClosestNode.Given_AVLTreeWithElement1InRoot_When_SearchClosestNode0_Then_Negative1  Time elapsed: 0 s
