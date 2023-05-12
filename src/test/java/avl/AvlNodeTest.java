@@ -2,6 +2,7 @@ package avl;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -44,5 +45,15 @@ public class AvlNodeTest {
         int expectedHeight = 1000213;
         node.setHeight(expectedHeight);
         assertEquals(expectedHeight, node.getHeight());
+    }
+
+    @DisplayName("prueba las posibilidades de hasOnlyARightChild")
+    @Test
+    public void NodeWithOnlyRightChild(){
+        AvlNode<Integer> node2 = new AvlNode<>(6);
+        node.setLeft(node2);
+        assertFalse(node.hasRight());
+        assertTrue(node.hasLeft());
+        assertFalse(node.hasOnlyARightChild());
     }
 }

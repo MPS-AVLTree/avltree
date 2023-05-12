@@ -3,6 +3,9 @@ package avl;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNull;
 import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.springframework.test.util.AssertionErrors.assertEquals;
 
 import java.util.Comparator;
 import org.junit.Assert;
@@ -34,10 +37,10 @@ public class AvlTreeTest {
 
   @Test
   public void testAvlIsEmpty() throws Exception {
-    assertTrue("TestAvlIsEmpty", avlTree.avlIsEmpty());
+    assertTrue(avlTree.avlIsEmpty());
 
     avlTree.insertTop(new AvlNode(5));
-    assertFalse("TestAvlIsEmpty", avlTree.avlIsEmpty());
+    assertFalse(avlTree.avlIsEmpty());
   }
 
   @Test
@@ -878,6 +881,82 @@ public class AvlTreeTest {
       assertEquals(null, avlTree.searchNode(node));
       assertEquals(false, avlTree.search(1).hasLeft());
     }
+    @DisplayName("Inserta un nodo en un arbol vacio")
+    @Test
+    public void testInsertMethod(){
+        avlTree.insert(1);
+        avlTree.insert(2);
+        assertEquals(" | 1 | 2", avlTree.toString());
+    }
+    @DisplayName("Prueba que en un arbol vacío el top es nulo")
+    @Test
+    public void testEmptyTree(){
+        AvlNode<Integer> node;
+
+        node = new AvlNode<Integer>(null);
+        avlTree.insertAvlNode(node);
+        avlTree.top = null;
+
+        assertNull(avlTree.searchNode(null));
+        assertNull(avlTree.top);
+    }
+
+    @DisplayName("Prueba el último caso del switch para pasar por default en insertAvlNode")
+    @Test
+    public void InsertAvlNodeTest(){
+        AvlNode<Integer> node;
+
+        node = new AvlNode<>(20);
+        avlTree.insertAvlNode(node);
+
+        node = new AvlNode<>(8);
+        avlTree.insertAvlNode(node);
+
+        node = new AvlNode<>(22);
+        avlTree.insertAvlNode(node);
+
+        node = new AvlNode<>(4);
+        avlTree.insertAvlNode(node);
+
+        node = new AvlNode<>(12);
+        avlTree.insertAvlNode(node);
+
+        node = new AvlNode<>(24);
+        avlTree.insertAvlNode(node);
+
+        node = new AvlNode<>(10);
+        avlTree.insertAvlNode(node);
+
+        node = new AvlNode<>(14);
+        avlTree.insertAvlNode(node);
+
+        assertEquals(avlTree.searchClosestNode(node), 0);
+        assertEquals(3, avlTree.getTop().getHeight());
+    }
+
+    @DisplayName("Borra un nodo que solo tenga hijo izqdo")
+    @Test
+    public void deleteNodeTest(){
+        AvlNode<Integer> node;
+
+        node = new AvlNode<>(20);
+        avlTree.insertAvlNode(node);
+
+        node = new AvlNode<>(30);
+        avlTree.insertAvlNode(node);
+
+        node = new AvlNode<>(25);
+        avlTree.insertAvlNode(node);
+
+        node = new AvlNode<>(23);
+        avlTree.insertAvlNode(node);
+
+        node = new AvlNode<>(28);
+        avlTree.insertAvlNode(node);
+      avlTree.delete(28);
+      avlTree.delete(18);
+      assertEquals(" | 25 | 20 | 23 | 30", avlTree.toString());
+    }
 
     @Test
     @DisplayName("DeleteNode con AVLNode en la rama derecha del arbol")
@@ -885,7 +964,6 @@ public class AvlTreeTest {
       avlTree.insert(1);
       avlTree.insert(3);
       AvlNode node = new AvlNode(3);
-
       avlTree.deleteNode(node);
 
       assertEquals(null, avlTree.searchNode(node));
@@ -1361,3 +1439,30 @@ SearchClosestNode
 
 
 }
+
+
+
+    /*@Test Completa los casos del While en el método FindSuccessor
+    public void FindSuccessorWhenNodeIsEqualToHisBrother(){
+        AvlNode<Integer> node;
+
+        node = new AvlNode<>(20);
+        avlTree.insertAvlNode(node);
+
+        node = new AvlNode<>(20);
+        avlTree.insertAvlNode(node);
+
+        node = new AvlNode<>(20);
+        avlTree.insertAvlNode(node);
+
+        node = new AvlNode<>(20);
+        avlTree.insertAvlNode(node);
+
+        node = new AvlNode<>(20);
+        avlTree.insertAvlNode(node);
+
+        avlTree.delete(20);
+
+        assertEquals(" | 20 | 20 | 20 | 20", avlTree.toString());
+    }*/
+

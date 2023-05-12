@@ -16,8 +16,8 @@
                 <version>3.1</version>
                 <configuration>
                     <!-- or whatever version you use -->
-                    <source>13</source>
-                    <target>13</target>
+                    <source>14</source>
+                    <target>14</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
@@ -31,12 +31,12 @@
         <version>5.9.2</version>
         <scope>test</scope>
     </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.1</version>
             <scope>test</scope>
-        </dependency>
+        </dependency>-->
     <dependency>
         <groupId>org.assertj</groupId>
         <artifactId>assertj-core</artifactId>

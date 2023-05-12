@@ -126,9 +126,7 @@ public class AvlTree<T> {
                 nodeFound.setItem(tmp);
                 if (successor.isLeaf()) {
                     deleteLeafNode(successor);
-                } else if (successor.hasOnlyALeftChild()) {
-                    deleteNodeWithALeftChild(successor);
-                } else if (successor.hasOnlyARightChild()) {
+                }else {
                     deleteNodeWithARightChild(successor);
                 }
             }
