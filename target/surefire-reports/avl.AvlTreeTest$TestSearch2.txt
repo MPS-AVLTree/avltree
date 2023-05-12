@@ -1,9 +1,9 @@
 -------------------------------------------------------------------------------
 Test set: avl.AvlTreeTest$TestSearch2
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 s - in avl.AvlTreeTest$TestSearch2
-avl.AvlTreeTest$TestSearch2.testSearchWithNullItem  Time elapsed: 0.003 s
-avl.AvlTreeTest$TestSearch2.testSearchWithItemInLeftBranch  Time elapsed: 0.002 s
-avl.AvlTreeTest$TestSearch2.testSearchWithItemInRightBranch  Time elapsed: 0 s
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s - in avl.AvlTreeTest$TestSearch2
+avl.AvlTreeTest$TestSearch2.testSearchWithNullItem  Time elapsed: 0.001 s
+avl.AvlTreeTest$TestSearch2.testSearchWithItemInLeftBranch  Time elapsed: 0 s
+avl.AvlTreeTest$TestSearch2.testSearchWithItemInRightBranch  Time elapsed: 0.001 s
 avl.AvlTreeTest$TestSearch2.testSearchWithItemNotInTree  Time elapsed: 0.001 s
 avl.AvlTreeTest$TestSearch2.testSearchWithItemInRoot  Time elapsed: 0.001 s

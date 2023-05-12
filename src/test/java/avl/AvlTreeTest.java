@@ -9,6 +9,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Comparator;
+import java.util.Optional;
+
 import org.junit.Assert;
 import org.junit.jupiter.api.*;
 import org.springframework.test.util.ReflectionTestUtils;
@@ -1499,6 +1501,412 @@ SearchClosestNode
     assertEquals(5, (int)avlTree.top.getItem());
     assertEquals(3, (int)avlTree.top.getLeft().getItem());
     assertEquals(7, (int)avlTree.top.getRight().getItem());
+  }
+
+  @Nested
+  @DisplayName("Tests findSuccessor")
+  class TestsFindSuccessor{
+    @Test
+    @DisplayName("findSuccessor con AVLNode null")
+    public void FindSuccessorNull_Throws_NullPointerException(){
+      assertThrows(NullPointerException.class, () -> avlTree.findSuccessor(null));
+    }
+
+    @Test
+    @DisplayName("findSuccessor con AVLNode valido en el arbol")
+    public void FindSuccessor_Returns_AVLNode_Successor(){
+      AvlNode<Integer> node1;
+
+      node1 = new AvlNode<>(5);
+      avlTree.insertAvlNode(node1);
+
+      AvlNode<Integer> node2 = new AvlNode<>(3);
+      avlTree.insertAvlNode(node2);
+
+      AvlNode<Integer> node3 = new AvlNode<>(7);
+      avlTree.insertAvlNode(node3);
+
+      assertEquals(avlTree.search(7), avlTree.findSuccessor(node1));
+    }
+
+    @Test
+    @DisplayName("finSuccessor con AVLNode no incluido en el arbol")
+    public void FindSuccessor_WithoutAVLNodeInTree_ReturnsNull(){
+      AvlNode<Integer> node1;
+      node1 = new AvlNode<>(5);
+
+      AvlNode<Integer> node2 = new AvlNode<>(3);
+      avlTree.insertAvlNode(node2);
+
+      AvlNode<Integer> node3 = new AvlNode<>(7);
+      avlTree.insertAvlNode(node3);
+
+      assertNull(avlTree.findSuccessor(node1));
+
+      avlTree.delete(7);
+      assertNull(avlTree.findSuccessor(node1));
+    }
+  }
+
+  /*
+      InsertNodeLeft
+          Con AVLNode nulo
+          Con AVLNode en el arbol
+          Con AVLNode no en el arbol
+   */
+  @Nested
+  @DisplayName("Tests insertNodeLeft")
+  class TestInsertNodeLeft{
+    @Test
+    @DisplayName("insertNodeLeft con AVLNode null")
+    public void InsertNodeLeftNull_Throws_NullPointerException(){
+      assertThrows(NullPointerException.class, () -> avlTree.insertNodeLeft(null));
+    }
+
+    @Test
+    @DisplayName("insertNodeLeft con AVLNode en el arbol")
+    public void InsertNodeLeft_InsertNode_In_LeftBranch(){
+      AvlNode<Integer> node;
+      node = new AvlNode<>(10);
+      avlTree.insertAvlNode(node);
+
+      node = new AvlNode<>(5);
+      avlTree.insertAvlNode(node);
+      avlTree.insertNodeLeft(node);
+
+      assertEquals(avlTree.search(5), avlTree.getTop().getLeft());
+    }
+
+    @Test
+    @DisplayName("insertNodeLeft con AVLNode en el arbol")
+    public void InsertNodeLeft_Without_AVLNode_InTree(){
+      AvlNode<Integer> node;
+      node = new AvlNode<>(5);
+
+      assertThrows(NullPointerException.class, () -> avlTree.insertNodeLeft(node));
+    }
+  }
+
+  /*
+      InsertNodeRight
+          Con AVLNode nulo
+          Con AVLNode en el arbol
+          Con AVLNode no en el arbol
+   */
+  @Nested
+  @DisplayName("Tests insertNodeRight")
+  class TestInsertNodeRight{
+    @Test
+    @DisplayName("InsertNodeRight con AVLNode null")
+    public void InsertNodeRightNull_Throws_NullPointerException(){
+      AvlNode<Integer> node;
+      node = new AvlNode<>(10);
+      avlTree.insertAvlNode(node);
+
+      AvlNode<Integer> node2 = null;
+      assertThrows(NullPointerException.class, () -> avlTree.insertNodeRight(node2));
+    }
+    @Test
+    @DisplayName("InsertNodeRight con AVLNode en el arbol")
+    public void InsertNodeRight_With_AVLNode_InTheTree(){
+      AvlNode<Integer> node;
+      node = new AvlNode<>(5);
+      avlTree.insertAvlNode(node);
+
+      node = new AvlNode<>(10);
+      avlTree.insertAvlNode(node);
+      avlTree.insertNodeRight(node);
+
+      assertEquals(10, (int)avlTree.getTop().getRight().getItem());
+    }
+
+    @Test
+    @DisplayName("InsertNodeRight sin AVLNode en el arbol")
+    public void InsertNodeRight_Without_AVLNode_InTheTree(){
+      AvlNode<Integer> node;
+      node = new AvlNode<>(5);
+
+      assertThrows(NullPointerException.class, () -> avlTree.insertNodeRight(node));
+    }
+
+
+  }
+
+  /*
+      ComparateNodes
+          Con AVLNode nulo
+   */
+  @Nested
+  @DisplayName("Tests para compareNodes")
+  class TestCompareNodes{
+    @Test
+    @DisplayName("ComparateNodes con parametros null")
+    public void CompareNodes_Throws_NullPointerException(){
+      AvlNode<Integer> node1 = null;
+      AvlNode<Integer> node2 = new AvlNode<>(1);
+      AvlNode<Integer> node3 = null;
+
+      assertThrows(NullPointerException.class, () -> avlTree.compareNodes(node1, node2));
+      assertThrows(NullPointerException.class, () -> avlTree.compareNodes(node2, node1));
+      assertThrows(NullPointerException.class, () -> avlTree.compareNodes(node1, node3));
+    }
+  }
+
+  /*
+      Rebalance
+          Con AVLNode nulo
+          Con AVLNode en el arbol
+          Con AVLNode no en el arbol
+   */
+  @Nested
+  @DisplayName("Tests para rebalance")
+  class TestRebalance{
+    @Test
+    @DisplayName("Rebalance con AVLNode null")
+    public void RebalanceNull_Throws_NullPointerException(){
+      AvlNode<Integer> node = null;
+
+      assertThrows(NullPointerException.class, () -> avlTree.rebalance(node));
+    }
+
+    @Test
+    @DisplayName("Rebalance con AVLNode en el arbol")
+    public void Rebalance_With_AVLNode_InTree(){
+      AvlNode<Integer> node;
+      node = new AvlNode<>(5);
+      avlTree.insertAvlNode(node);
+
+      node = new AvlNode<>(3);
+      avlTree.insertAvlNode(node);
+
+      node = new AvlNode<>(7);
+      avlTree.insertAvlNode(node);
+
+      assertEquals(0, avlTree.getBalance(avlTree.search(5)));
+
+      node = new AvlNode<>(1);
+      avlTree.insertAvlNode(node);
+
+      node = new AvlNode<>(0);
+      avlTree.insertAvlNode(node);
+
+      assertEquals(-1,avlTree.getBalance(avlTree.search(5)));
+    }
+
+    @Test
+    @DisplayName("Rebalance sin AVLNode en el arbol")
+    public void Rebalance_Without_AVLNode_InTree(){
+      AvlNode<Integer> node;
+      node = new AvlNode<>(5);
+
+      node = new AvlNode<>(3);
+      avlTree.insertAvlNode(node);
+
+      node = new AvlNode<>(7);
+      avlTree.insertAvlNode(node);
+
+      assertThrows(NullPointerException.class, () -> avlTree.rebalance(avlTree.search(5)));
+    }
+  }
+
+  /*
+      LeftRotation
+          Con AVLNode nulo
+          Con AVLNode no en el arbol
+   */
+  @Nested
+  @DisplayName("Tests para leftRotation")
+  class TestLeftRotation{
+    @Test
+    @DisplayName("LeftRotation con AVLNode null")
+    public void LeftRotationNull_Throws_NullPointerException(){
+      AvlNode<Integer> node = null;
+
+      assertThrows(NullPointerException.class, () -> avlTree.leftRotation(node));
+    }
+
+    @Test
+    @DisplayName("LeftRotation sin AVLNode en el arbol")
+    public void LeftRotation_Without_AVLNode_InTheTree(){
+      AvlNode<Integer> node;
+      node = new AvlNode<>(5);
+
+      node = new AvlNode<>(7);
+      avlTree.insertAvlNode(node);
+
+      node = new AvlNode<>(9);
+      avlTree.insertAvlNode(node);
+
+      assertThrows(NullPointerException.class, () -> avlTree.leftRotation(avlTree.search(5)));
+    }
+  }
+
+  /*
+      RightRotation
+          Con AVLNode nulo
+          Con AVLNode no en el arbol
+   */
+  @Nested
+  @DisplayName("Tests para rightRotation")
+  class TestRightRotation{
+    @Test
+    @DisplayName("RightRotation con AVLNode null")
+    public void RightRotationNull_Throws_NullPointerException(){
+      AvlNode<Integer> node = null;
+
+      assertThrows(NullPointerException.class, () -> avlTree.rightRotation(node));
+    }
+
+    @Test
+    @DisplayName("RightRotation sin AVLNode en el arbol")
+    public void RightRotation_Without_AVLNode_InTheTree(){
+      AvlNode<Integer> node;
+      node = new AvlNode<>(5);
+
+      node = new AvlNode<>(7);
+      avlTree.insertAvlNode(node);
+
+      node = new AvlNode<>(9);
+      avlTree.insertAvlNode(node);
+
+      assertThrows(NullPointerException.class, () -> avlTree.rightRotation(avlTree.search(5)));
+    }
+  }
+
+  /*
+      DoubleLeftRotation
+          Con AVLNode nulo
+          Con AVLNode en el arbol
+          Con AVLNode no en el arbol
+   */
+  @Nested
+  @DisplayName("Tests para doubleLeftRotation")
+  class TestDoubleLeftRotation{
+    @Test
+    @DisplayName("DoubleLeftRotation con AVLNode null")
+    public void DoubleLeftRotationNull_Throws_NullPointerException(){
+      AvlNode<Integer> node = null;
+
+      assertThrows(NullPointerException.class, () -> avlTree.doubleLeftRotation(node));
+    }
+
+    @Test
+    @DisplayName("DoubleLeftRotation con AVLNode en el arbol")
+    public void DoubleLeftRotation_With_AVLNode_InTheTree(){
+      AvlNode<Integer> node;
+
+      node = new AvlNode<>(7);
+      avlTree.insertAvlNode(node);
+
+      node = new AvlNode<>(10);
+      avlTree.insertAvlNode(node);
+
+      node = new AvlNode<>(8);
+      avlTree.insertAvlNode(node);
+
+      assertEquals(avlTree.search(8), avlTree.getTop());
+    }
+
+    @Test
+    @DisplayName("DoubleLeftRotation sin AVLNode en el arbol")
+    public void DoubleLeftRotation_Without_AVLNode_InTheTree(){
+      AvlNode<Integer> node;
+
+      node = new AvlNode<>(7);
+
+      assertThrows(NullPointerException.class, () -> avlTree.doubleLeftRotation(avlTree.search(7)));
+    }
+  }
+
+  /*
+      DoubleRightRotation
+          Con AVLNode nulo
+          Con AVLNode en el arbol
+          Con AVLNode no en el arbol
+   */
+  @Nested
+  @DisplayName("Tests para doubleRightRotation")
+  class TestDoubleRightRotation{
+    @Test
+    @DisplayName("DoubleRightRotation con AVLNode null")
+    public void DoubleRightRotationNull_Throws_NullPointerException(){
+      AvlNode<Integer> node = null;
+
+      assertThrows(NullPointerException.class, () -> avlTree.doubleRightRotation(node));
+    }
+
+    @Test
+    @DisplayName("DoubleRightRotation con AVLNode en el arbol")
+    public void DoubleRightRotation_With_AVLNode_InTheTree(){
+      AvlNode<Integer> node;
+
+      node = new AvlNode<>(7);
+      avlTree.insertAvlNode(node);
+
+      node = new AvlNode<>(3);
+      avlTree.insertAvlNode(node);
+
+      node = new AvlNode<>(5);
+      avlTree.insertAvlNode(node);
+
+      assertEquals(avlTree.search(5), avlTree.getTop());
+    }
+
+    @Test
+    @DisplayName("DoubleRightRotation sin AVLNode en el arbol")
+    public void DoubleRightRotation_Without_AVLNode_InTheTree(){
+      AvlNode<Integer> node;
+      node = new AvlNode<>(7);
+
+      assertThrows(NullPointerException.class, () -> avlTree.doubleRightRotation(avlTree.search(7)));
+    }
+  }
+
+  /*
+      GetBalance
+          Con AVLNode nulo
+          Con AVLNode en el arbol
+          Con AVLNode no en el arbol
+   */
+  @Nested
+  @DisplayName("Tests para getBalance")
+  class TestGetBalance{
+    @Test
+    @DisplayName("GetBalance con AVLNode null")
+    public void GetBalanceNull_Throws_NullPointerException(){
+      AvlNode<Integer> node = null;
+
+      assertThrows(NullPointerException.class, () -> avlTree.getBalance(node));
+    }
+
+    @Test
+    @DisplayName("GetBalance sin AVLNode en el arbol")
+    public void GetBalance_Without_AVLNode_InTheTree(){
+      AvlNode<Integer> node;
+      node = new AvlNode<>(5);
+
+      assertEquals(0, avlTree.getBalance(node));
+    }
+
+    @Test
+    @DisplayName("GetBalance con AVLNode en el arbol")
+    public void GetBalance_With_AVLNode_InTheTree(){
+      AvlNode<Integer> node;
+      node = new AvlNode<>(5);
+      avlTree.insertAvlNode(node);
+
+      node = new AvlNode<>(6);
+      avlTree.insertAvlNode(node);
+
+      assertEquals(1, avlTree.getBalance(avlTree.search(5)));
+
+      avlTree.delete(6);
+
+      node = new AvlNode<>(4);
+      avlTree.insertAvlNode(node);
+
+      assertEquals(-1, avlTree.getBalance(avlTree.search(5)));
+    }
   }
 }
 

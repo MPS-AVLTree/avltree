@@ -217,7 +217,7 @@ public class AvlTree&lt;T&gt; {
             }
 <span class="fc" id="L218">            result = tmp;</span>
 <span class="fc" id="L219">        } else {</span>
-<span class="pc bpc" id="L220" title="1 of 4 branches missed.">            while (node.hasParent() &amp;&amp; (node.getParent().getRight() == node)) {</span>
+<span class="fc bfc" id="L220" title="All 4 branches covered.">            while (node.hasParent() &amp;&amp; (node.getParent().getRight() == node)) {</span>
 <span class="fc" id="L221">                node = node.getParent();</span>
             }
 <span class="fc" id="L223">            result = node.getParent();</span>

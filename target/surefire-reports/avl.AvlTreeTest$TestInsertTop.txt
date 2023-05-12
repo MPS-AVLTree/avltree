@@ -1,6 +1,6 @@
 -------------------------------------------------------------------------------
 Test set: avl.AvlTreeTest$TestInsertTop
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s - in avl.AvlTreeTest$TestInsertTop
-avl.AvlTreeTest$TestInsertTop.Given_AVLTree_When_InsertTop_Then_NothingHappens  Time elapsed: 0.002 s
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s - in avl.AvlTreeTest$TestInsertTop
+avl.AvlTreeTest$TestInsertTop.Given_AVLTree_When_InsertTop_Then_NothingHappens  Time elapsed: 0.001 s
 avl.AvlTreeTest$TestInsertTop.Given_AVLTree_When_InsertTopNull_Then_NothingHappens  Time elapsed: 0.001 s
