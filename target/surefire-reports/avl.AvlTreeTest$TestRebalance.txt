@@ -1,0 +1,7 @@
+-------------------------------------------------------------------------------
+Test set: avl.AvlTreeTest$TestRebalance
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s - in avl.AvlTreeTest$TestRebalance
+avl.AvlTreeTest$TestRebalance.Rebalance_Without_AVLNode_InTree  Time elapsed: 0.001 s
+avl.AvlTreeTest$TestRebalance.Rebalance_With_AVLNode_InTree  Time elapsed: 0.002 s
+avl.AvlTreeTest$TestRebalance.RebalanceNull_Throws_NullPointerException  Time elapsed: 0.002 s

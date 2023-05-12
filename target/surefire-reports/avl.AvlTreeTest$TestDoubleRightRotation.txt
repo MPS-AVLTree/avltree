@@ -1,0 +1,7 @@
+-------------------------------------------------------------------------------
+Test set: avl.AvlTreeTest$TestDoubleRightRotation
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.01 s - in avl.AvlTreeTest$TestDoubleRightRotation
+avl.AvlTreeTest$TestDoubleRightRotation.DoubleRightRotation_With_AVLNode_InTheTree  Time elapsed: 0.001 s
+avl.AvlTreeTest$TestDoubleRightRotation.DoubleRightRotationNull_Throws_NullPointerException  Time elapsed: 0.002 s
+avl.AvlTreeTest$TestDoubleRightRotation.DoubleRightRotation_Without_AVLNode_InTheTree  Time elapsed: 0.001 s

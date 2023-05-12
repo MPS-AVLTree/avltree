@@ -1,0 +1,7 @@
+-------------------------------------------------------------------------------
+Test set: avl.AvlTreeTest$TestsFindSuccessor
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s - in avl.AvlTreeTest$TestsFindSuccessor
+avl.AvlTreeTest$TestsFindSuccessor.FindSuccessor_Returns_AVLNode_Successor  Time elapsed: 0.001 s
+avl.AvlTreeTest$TestsFindSuccessor.FindSuccessor_WithoutAVLNodeInTree_ReturnsNull  Time elapsed: 0.001 s
+avl.AvlTreeTest$TestsFindSuccessor.FindSuccessorNull_Throws_NullPointerException  Time elapsed: 0.001 s

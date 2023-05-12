@@ -1,0 +1,5 @@
+-------------------------------------------------------------------------------
+Test set: avl.AvlTreeTest$TestCompareNodes
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s - in avl.AvlTreeTest$TestCompareNodes
+avl.AvlTreeTest$TestCompareNodes.CompareNodes_Throws_NullPointerException  Time elapsed: 0.001 s

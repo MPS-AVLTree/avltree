@@ -1,0 +1,7 @@
+-------------------------------------------------------------------------------
+Test set: avl.AvlTreeTest$TestInsertNodeLeft
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s - in avl.AvlTreeTest$TestInsertNodeLeft
+avl.AvlTreeTest$TestInsertNodeLeft.InsertNodeLeftNull_Throws_NullPointerException  Time elapsed: 0.001 s
+avl.AvlTreeTest$TestInsertNodeLeft.InsertNodeLeft_Without_AVLNode_InTree  Time elapsed: 0.002 s
+avl.AvlTreeTest$TestInsertNodeLeft.InsertNodeLeft_InsertNode_In_LeftBranch  Time elapsed: 0.001 s
